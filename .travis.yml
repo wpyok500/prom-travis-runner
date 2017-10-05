@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+
+language: bash
+
+script:
+  - cd /tmp
+  - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" https://raw.githubusercontent.com/phuslu/prom/master/assets/build/ci.sh | bash -xe"
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - g++-mingw-w64
+      - gcc-4.8-multilib-arm-linux-gnueabihf
+      - gcc-arm-linux-gnueabihf
+      - lftp
+      - libc6-dev-armhf-cross
+      - p7zip-full
